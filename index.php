@@ -16,14 +16,17 @@
 <?php
 
 ?>
-<nav class="navbar navbar-expand-lg  bg-body-tertiary ">
-    <div class="container-fluid w-100 style=width: 1000px " >
-        <a class="navbar-brand" href="#">Navbar scroll</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary  bg-dark width=800px">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar
+        <img src = "images/file-pokeball-png-0.png" class="w-25" alt = "logo pokédex">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarScroll">
-            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"  style="--bs-scroll-height: 100px ;">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
@@ -32,7 +35,7 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Link
+                        Dropdown
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">Action</a></li>
@@ -42,7 +45,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" aria-disabled="true">Link</a>
+                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
                 </li>
             </ul>
             <form class="d-flex" role="search">
@@ -53,6 +56,36 @@
     </div>
 </nav>
 
+<main class="container-fluid">
+
+    <div class="card m-5" style="width: 18rem;">
+        <img src="images/001.png" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Bulbizarre</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-warning">Modifier</a>
+        </div>
+    </div>
+
+    <div class="card m-5" style="width: 18rem;">
+        <img src="images/025.png" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Pikachu</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-warning">Modifier</a>
+        </div>
+    </div>
+
+    <div class="card m-5" style="width: 18rem;">
+        <img src="images/004.png" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Pikachu</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-warning">Modifier</a>
+        </div>
+    </div>
+
+</main>
 </body>
 </html>
 
