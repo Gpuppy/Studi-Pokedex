@@ -2,11 +2,11 @@
 
 class Pokemon {
     private int $id;
-    private int $number;
+    private ?int $number;
     private string $name;
     private string $description;
     private int $type1;
-    private int $type2;
+    private ?int $type2 = null;
 
     public function __construct(array $data)
     {
@@ -43,26 +43,29 @@ class Pokemon {
     }
 
     /**
-     * @return
+     * Get value of number
      */
-    public function getNumber() : int
+    public function getNumber(): int
     {
         return $this->number;
     }
 
     /**
-     * @param $number
+     * Set value of number
+     *
+     * @return self
      */
-    public function setNumber($number): void
-    {
-        if(is_int($number)<800){
+
+    /** @noinspection PhpUnused */
+    public function setNumber($number)
+    {   if(is_int($number) < 800){
             $this->number = $number;
         }
-
+        return $this;
     }
 
     /**
-     * @return
+     * @Get the value of name
      */
     public function getName(): string
     {
@@ -115,7 +118,7 @@ class Pokemon {
     /**
      * @return
      */
-    public function getType2(): int
+    public function getType2()
     {
         return $this->type2;
     }
@@ -123,9 +126,11 @@ class Pokemon {
     /**
      * @param $type2
      */
-    public function setType2($type2): void
+    public function setType2($type2)
     {
         $this->type2 = $type2;
+
+        return $this;
     }
 
 
