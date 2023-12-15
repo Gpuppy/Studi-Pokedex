@@ -94,7 +94,7 @@ echo $exception->getMessage();
     public function delete(int $id)
     {
          //code
-        $req = $this->db->prepare("DELETE FROM 'pokemon' WHERE id = :id");
+        $req = $this->db->prepare("DELETE FROM `pokemon` WHERE id = :id");
         $req->bindValue(":id", $id, PDO::PARAM_INT );
         $req->execute();
     }

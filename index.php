@@ -17,7 +17,7 @@ $pokemons = $manager->getAll('');
     <?php
     foreach($pokemons as $pokemon): ?>
     <div class="card m-5" style="width: 18rem;">
-        <img src="images/001.png" class="card-img-top" alt="">
+        <img src="" class="card-img-top" alt="<?= $pokemon->getName() ?>">
         <div class="card-body">
             <h5 class="card-title"><?= $pokemon->getName() ?>#<!--?= $pokemon->getNumber() ?--></h5>
                   <p class="card-text"><?= $pokemon->getDescription() ?></p>
