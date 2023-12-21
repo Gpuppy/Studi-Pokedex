@@ -1,36 +1,67 @@
 <?php
 
-require ("PokemonsManager.php");
+require ("./PokemonsManager.php");
 require ("header.php");
 require("./TypesManager.php");
-$manager = new PokemonsManager();
+require ("./ImagesManager.php");
+//require("./Image.php");
+$pokemonManager = new PokemonsManager();
 
 $typeManager = new TypesManager();
 $types = $typeManager->getAll();
+$error = null;
 
 if($_POST){
     $number = $_POST["number"];
     $name = $_POST["name"];
     $description = $_POST["description"];
-    $type1 = $_POST["type1"];
-    $type2 = $_POST["type2"];
+    $idType1 = $_POST["type1"];
+    $idType2 = $_POST["type2"];
 
-    var_dump($_FILES);
-
+    //var_dump($_FILES);
+try{
     if($_FILES["image"]["size"] < 2000000){
-       $imageManager = new ImagesManager();
+       $imagesManager = new ImagesManager();
        $fileName = $_FILES["image"]["name"];
-
-       if(!is_dir("upload/")){
-           if (!mkdir("upload/") && !is_dir("upload/")) {
-               throw new \RuntimeException(sprintf('Directory "%s" was not created', "upload/"));
-           }
+       if (!is_dir("upload/")){
+           mkdir("upload/");
        }
        $targetFile = "upload/{$fileName}";
        $fileExtension = pathinfo($targetFile, PATHINFO_EXTENSION);
-       var_dump($fileName);
+        //var_dump($fileExtension);
+        define("EXTENSIONS", ["png", "jpeg", "jpg", "webp"]);
+
+       if(in_array(strtolower($fileExtension) , ["png", "jpeg", "jpg", "webp"])){
+           if(move_uploaded_file($_FILES["image"]["tmp_name"], $targetFile)){
+             $imagesManager = new ImagesManager();
+             $image = new Image([$fileName, $targetFile]);
+             $imagesManager->create($image);
+           }else{
+               throw new Exception("Une erreur est survenue..");
+           }
+       }else {
+           throw new Exception("L'extension du fichier n'est pas correcte");
+       }
+    }else{
+        throw new Exception("Le fichier soumis est trop important");
     }
+}catch(Exception $e){
+    $error = $e->getMessage();
 }
+
+      $idImage = $imagesManager->getLastImageId();
+      $newPokemon = new Pokemon([
+              "number" => $number,
+      "name" => $name,
+      "description" => $description,
+          "type1" => $idType1,
+      "type2" => $idType2,
+          "image" => $idImage,
+
+      ]);
+      $pokemonManager->create($newPokemon);
+      header("Location: index.php");
+      }
 
 //var_dump($types);
 ?>
