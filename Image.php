@@ -40,6 +40,7 @@ class Image
 public function setId($id)
 {
 $this->id = $id;
+
 return $this;
 }
 
@@ -59,6 +60,7 @@ return $this->name;
 public function setName($name)
 {
 $this->name = $name;
+
 return $this;
 }
 
@@ -78,6 +80,7 @@ return $this->path;
 public function setPath($path)
 {
 $this->path = $path;
+
 return $this;
 }
 }

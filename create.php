@@ -16,11 +16,11 @@ if($_POST){
     $name = $_POST["name"];
     $description = $_POST["description"];
     $idType1 = $_POST["type1"];
-    $idType2 = $_POST["type2"];
+    $idType2 = $_POST["type2"] === "null" ? null : $_POST["type2"];
 
     //var_dump($_FILES);
 try{
-    if($_FILES["image"]["size"] < 2000000){
+    if($_FILES["image"]["size"] /*< 2000000*/){
        $imagesManager = new ImagesManager();
        $fileName = $_FILES["image"]["name"];
        if (!is_dir("upload/")){
@@ -31,10 +31,11 @@ try{
         //var_dump($fileExtension);
         define("EXTENSIONS", ["png", "jpeg", "jpg", "webp"]);
 
-       if(in_array(strtolower($fileExtension) , ["png", "jpeg", "jpg", "webp"])){
+       if(in_array(strtolower($fileExtension) ,EXTENSIONS)) {
            if(move_uploaded_file($_FILES["image"]["tmp_name"], $targetFile)){
              $imagesManager = new ImagesManager();
-             $image = new Image([$fileName, $targetFile]);
+             $image = new Image(["name" => $fileName, "path" => $targetFile]);
+             //var_dump($image);
              $imagesManager->create($image);
            }else{
                throw new Exception("Une erreur est survenue..");
@@ -50,6 +51,7 @@ try{
 }
 
       $idImage = $imagesManager->getLastImageId();
+//var_dump($idImage);
       $newPokemon = new Pokemon([
               "number" => $number,
       "name" => $name,
@@ -67,6 +69,10 @@ try{
 ?>
 
 <main class ="container">
+    <?php
+    if($error) {
+        echo "<p class = 'alert alert-danger'>$error</p>";
+    }?>
 <form method = "post" enctype="multipart/form-data">
     <label for = "number" class="form-label">Number</label>
     <input type="number" name="number" placeholder="Pokemon's number" id="name" class="form-control" min="1" max="901">
@@ -86,24 +92,35 @@ try{
 
         </select> <br>
 
-<label for="type2" class="form-label">Type2</label><br>
+    <label for="type2" class="form-label">Type2</label><br>
 
     <select name="type2" id="type2" class="form-select">
+        <option value="null">---</option>
+        <?php
+        foreach($types as $type): ?>
+            <option value="<?= $type->getId() ?>"><?=$type->getName()?></option>
+        <?php endforeach ?>
+
+    </select> <br>
+
+<!--label for="image" class="form-label">Image</label><br>
+
+    <select name="image" id="image" class="form-select">
         <option value="">---</option>
         <?php
         foreach($types as $type): ?>
             <option value="<?= $type->getId() ?>"><?=$type->getName()?></option>
         <?php endforeach ?>
 
-    </select>
+    </select-->
 
         <br>
-    <label for="image"
-    <div class="mb-3">
-        <label for="formFile" class="form-label"></label>
-        <input class="form-control" type="file" id="formFile">
-    </div>
+    <label for="image" class="form-label">Image</label>
+    <!--div class="mb-3"-->
+    <input type="file" name="image" id="image" class="form-control">
+    <!--/div-->
 
-    <input type = "submit" class="bt btn-danger mt-3" class="btn-danger">
+    <input type = "submit" class="btn btn-danger mt-3" value="Create">
+
 </form>
 </main>

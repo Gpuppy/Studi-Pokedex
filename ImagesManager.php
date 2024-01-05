@@ -18,7 +18,7 @@ class ImagesManager{
         }
     }
 
-    public function create(Image $image): void
+    public function create(Image $image)
     {
         $req = $this->db->prepare("INSERT INTO `image` (name, path) VALUE (:name, :path)");
 
@@ -30,18 +30,26 @@ class ImagesManager{
 
     public function get(int $id)
     {
-        $req = $this->db->prepare("SELECT * FROM `image` WHERE id = :id");
-        $req->bindValue(":id",$id,PDO::PARAM_INT);
+        $req = $this->db->query("SELECT * FROM `image` WHERE id = $id");
+        //$req->bindValue(":id",$id, PDO::PARAM_STR);
+        //$req->execute([":id" => $id]);
         $data = $req->fetch();
         $image = new Image($data);
         return $image;
     }
 
+    public function getLastImageId()
+    {
+        $req = $this->db->query("SELECT * FROM `image` ORDER BY id DESC");
+        return $req->fetch()["id"];
+    }
+
     public function update(Image $image)
     {
         $req = $this->db->prepare("UPDATE 'image' SET name = :name, path = :path");
+
         $req->bindValue(":name", $image->getName(),PDO::PARAM_STR);
-        $req->bindValue(":path", $image->getPath(),PDO::PARAM_STR);
+        $req->bindValue(":description", $image->getPath(),PDO::PARAM_STR);
 
         $req->execute();
     }

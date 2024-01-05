@@ -2,13 +2,12 @@
 
 class Pokemon {
     private int $id;
-    private ?int $number;
+    private $number;
     private string $name;
     private string $description;
     private int $type1;
-    private ?int $type2 = null;
-
-    private $image;
+    private $type2;
+    private string $image;
 
     public function __construct(array $data)
     {
@@ -28,7 +27,7 @@ class Pokemon {
 
 
     /**
-     * @return
+     * Getter and setters
      */
     public function getId() : int
     {
@@ -36,7 +35,9 @@ class Pokemon {
     }
 
     /**
-     * @param $id:int
+     * Set value of id
+     *
+     * @return self
      */
     public function setId(int $id): Pokemon
     {
@@ -47,7 +48,7 @@ class Pokemon {
     /**
      * Get value of number
      */
-    public function getNumber(): int
+    public function getNumber()
     {
         return $this->number;
     }
@@ -58,9 +59,9 @@ class Pokemon {
      * @return self
      */
 
-    /** @noinspection PhpUnused */
-    public function setNumber($number)
-    {   if(is_int($number) < 800){
+        public function setNumber($number)
+        {
+        if(is_int($number) < 800){
             $this->number = $number;
         }
         return $this;
@@ -69,31 +70,36 @@ class Pokemon {
     /**
      * @Get the value of name
      */
-    public function getName(): string
+    public function getName()
     {
         return $this->name;
     }
 
     /**
-     * @param $name
+     * Set value of name
+     *
+     * @return self
      */
-    public function setName($name): void
+    public function setName($name)
     {
         $this->name = $name;
+        return $this;
     }
 
     /**
-     * @return
+     * Get value description
      */
-    public function getDescription(): string
+    public function getDescription()
     {
         return $this->description;
     }
 
     /**
-     * @param $description
+     * Set the value of description
+     *
+     * @return self
      */
-    public function setDescription($description): static
+    public function setDescription($description)
     {
         if(is_string($description) && strlen($description) > 5 && strlen($description) < 1000) {
             $this->description = $description;
@@ -102,23 +108,26 @@ class Pokemon {
     }
 
     /**
-     * @return
+     * Get the value of type1
      */
-    public function getType1(): int
+    public function getType1()
     {
         return $this->type1;
     }
 
     /**
-     * @param $type1
+     * Set the value of type1
+     *
+     * @return self
      */
-    public function setType1($type1): void
+    public function setType1($type1)
     {
         $this->type1 = $type1;
+        return $this;
     }
 
     /**
-     * @return
+     * Get value of type 2
      */
     public function getType2()
     {
@@ -126,9 +135,11 @@ class Pokemon {
     }
 
     /**
-     * @param $type2
+     * Set value of type2
+     *
+     * @return self
      */
-    public function setType2($type2)
+    public function setType2($type2) : self
     {
         $this->type2 = $type2;
 
@@ -136,7 +147,7 @@ class Pokemon {
     }
 
     /**
-     * Get value image
+     * Get the value of image
      */
     public function getImage()
     {
@@ -144,13 +155,13 @@ class Pokemon {
     }
 
     /**
-     * Set value $image
+     * Set the value of image
      */
     public function setImage($image)
     {
         $this->image = $image;
 
-        return $this->image;
+        return $this;
     }
 
 

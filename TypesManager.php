@@ -21,7 +21,7 @@ class TypesManager{
     }
 
     public function create(Type $type){
-          $req = $this->db->prepare("INSERT INTO 'type'(name, color) VALUE(:name, :color)");
+          $req = $this->db->prepare("INSERT INTO `type`(name, color) VALUE(:name, :color)");
             $req->bindValue(":name", $type->getName(),PDO::PARAM_STR);
             $req->bindValue(":color", $type->getColor(),PDO::PARAM_STR);
 
@@ -65,7 +65,7 @@ class TypesManager{
     public function getAllByType(string $input){
         $types = [];
         $req = $this->db->prepare("SELECT * FROM `type` WHERE type1 LIKE: input OR type2 LIKE :input ORDER BY number");
-        $req->bindValue(":input", $input, PDO::PARAM_STR);
+        $req->bindValue(":input", $input, type: PDO::PARAM_STR);
         $datas = $req->fetchAll();
         foreach ($datas as $data) {
             $type = new Type($data);
@@ -85,7 +85,7 @@ class TypesManager{
 
     public function delete(int $id)
     {
-        $req = $this->db->prepare("DELETE FROM 'type' WHERE id = :id");
+        $req = $this->db->prepare("DELETE FROM `type` WHERE id = :id");
         $req->bindValue(":id", $id, PDO::PARAM_INT );
         $req->execute();
     }

@@ -3,31 +3,35 @@
 <body >
 <?php
 
-require ("./PokemonsManager.php");
 require ("header.php");
+require ("./PokemonsManager.php");
 $manager = new PokemonsManager();
-$pokemons = $manager->getAll('');
+require 'ImagesManager.php';
+$imagesManager = new ImagesManager();
+$pokemons = $manager->getAll("");
 //var_dump($pokemons);
 
 ?>
 
 
 <main class="container">
-    <section class="-fluid d-flex flex-wrap justify-content-center">
+    <section class="d-flex flex-wrap justify-content-center">
     <?php
     foreach($pokemons as $pokemon): ?>
+       <?php ($imagesManager->get($pokemon->getImage())) ?>
     <div class="card m-5" style="width: 18rem;">
-        <img src="" class="card-img-top" alt="<?= $pokemon->getName() ?>">
+        <img src="<?= $imagesManager->get($pokemon->getImage())->getPath() ?>" class="card-img-top" alt="<?= $pokemon->getName() ?>">
         <div class="card-body">
-            <h5 class="card-title"><?= $pokemon->getName() ?>#<!--?= $pokemon->getNumber() ?--></h5>
-                  <p class="card-text"><?= $pokemon->getDescription() ?></p>
-            <a href="#" class="btn btn-warning">Modifier</a>
+            <h5 class="card-title"><?= $pokemon->getName() ?>#<?= $pokemon->getNumber() ?></h5>
+                  <p class="card-text"><?=$pokemon->getDescription()?></p>
+            <a href="#" class="btn btn-warning">Update</a>
+            <a href="./delete.php?id=<?= $pokemon->getId()?>" class=" btn btn-danger">Delete</a>
         </div>
     </div>
 <?php endforeach; ?>
     </section>
     <button>
-    <a href= "./create.php" class"btn btn-danger">Create a Pokemon!</a></button>
+    <a href= "./create.php" class= "btn btn-success">Create a Pokemon!</a></button>
     <!--div class="card m-5" style="width: 18rem;">
         <img src="images/025.png" class="card-img-top" alt="...">
         <div class="card-body">
@@ -48,7 +52,7 @@ $pokemons = $manager->getAll('');
 
 </main>
 </body>
-</html>
+
 
 
 
