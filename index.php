@@ -6,7 +6,7 @@ require ("./PokemonsManager.php");
 $manager = new PokemonsManager();
 require 'ImagesManager.php';
 $imagesManager = new ImagesManager();
-$pokemons = $manager->getAll("");
+$pokemons = $manager->getAll();
 //var_dump($pokemons);
 
 // Connect to DB
