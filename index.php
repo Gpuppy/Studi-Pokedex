@@ -9,6 +9,9 @@ $imagesManager = new ImagesManager();
 $pokemons = $manager->getAll("");
 //var_dump($pokemons);
 
+// Connect to DB
+$conn = new mysqli('d3y0lbg7abxmbuoi.chr7pe7iynqr.eu-west-1.rds.amazonaws.com', 'pg5vb9547j5p7ewi', 'chjijzyrqpkmjzbh', 'ejta5rbv6riwb80b');
+
 ?>
 
 
