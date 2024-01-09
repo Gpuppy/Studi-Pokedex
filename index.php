@@ -22,7 +22,7 @@ $pokemons = $manager->getAll();
     ));
 });*/
 // Connect to DB
-$conn = new mysqli('d3y0lbg7abxmbuoi.chr7pe7iynqr.eu-west-1.rds.amazonaws.com', 'pg5vb9547j5p7ewi', 'chjijzyrqpkmjzbh', 'ejta5rbv6riwb80b');
+$conn = new mysqli('d3y0lbg7abxmbuoi.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306', 'pg5vb9547j5p7ewi', 'chjijzyrqpkmjzbh', 'ejta5rbv6riwb80b');
 ?>
 
 
