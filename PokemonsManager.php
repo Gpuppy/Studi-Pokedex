@@ -12,7 +12,7 @@ class PokemonsManager{
         $username = "root";
         $password = "root";
         try{
-            $this->db = new PDO("mysql:host=localhost;dbname=$dbName;port=$port", $username, $password) ;
+            $this->db = new PDO("mysql:host=127.0.0.1;dbname=$dbName;port=$port", $username, $password) ;
         }catch(PDOException $exception){
 echo $exception->getMessage();
         }

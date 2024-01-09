@@ -2,16 +2,27 @@
 <?php
 
 require ("header.php");
-require ("./PokemonsManager.php");
+require "./PokemonsManager.php";
 $manager = new PokemonsManager();
-require 'ImagesManager.php';
+require './ImagesManager.php';
 $imagesManager = new ImagesManager();
 $pokemons = $manager->getAll();
-//var_dump($pokemons);
 
+
+// Add Database connection to Container
+/*$container->set(PDO::class, function() {
+    $dburl = parse_url(getenv('DATABASE_URL') ?: throw new Exception('no DATABASE_URL'));
+    return new PDO(sprintf(
+        "pgsql:host=%s;port=%s;dbname=%s;user=%s;password=%s",
+        $dburl['host'],
+        $dburl['port'],
+        ltrim($dburl['path'], '/'), // URL path is the DB name, must remove leading slash
+        $dburl['user'],
+        $dburl['pass'],
+    ));
+});*/
 // Connect to DB
-$conn = new mysqli('d3y0lbg7abxmbuoi.chr7pe7iynqr.eu-west-1.rds.amazonaws.com', 'pg5vb9547j5p7ewi', 'chjijzyrqpkmjzbh', 'ejta5rbv6riwb80b');
-
+//$conn = new mysqli('d3y0lbg7abxmbuoi.chr7pe7iynqr.eu-west-1.rds.amazonaws.com', 'pg5vb9547j5p7ewi', 'chjijzyrqpkmjzbh', 'ejta5rbv6riwb80b');
 ?>
 
 
