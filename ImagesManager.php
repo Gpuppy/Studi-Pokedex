@@ -7,7 +7,7 @@ class ImagesManager{
 
     public function __construct()
     {
-        $dbName = "mysql://pg5vb9547j5p7ewi:chjijzyrqpkmjzbh@d3y0lbg7abxmbuoi.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306/ejta5rbv6riwb80b";
+        /*$dbName = "mysql://pg5vb9547j5p7ewi:chjijzyrqpkmjzbh@d3y0lbg7abxmbuoi.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306/ejta5rbv6riwb80b";
         $port = 3306;
         $username = "pg5vb9547j5p7ewi";
         $password = "chjijzyrqpkmjzbh";
@@ -15,9 +15,9 @@ class ImagesManager{
             $this->db = new PDO("mysql:host=localhost;dbname=$dbName;port=$port", $username, $password) ;
         }catch(PDOException $exception){
             echo $exception->getMessage();
-        }
+        }*/
 
-        /*$dbName = "studi-pokedex";
+        $dbName = "studi-pokedex";
         $port = 3306;
         $username = "root";
         $password = "root";
@@ -25,7 +25,7 @@ class ImagesManager{
             $this->db = new PDO("mysql:host=localhost;dbname=$dbName;port=$port", $username, $password) ;
         }catch(PDOException $exception){
             echo $exception->getMessage();
-        }*/
+        }
     }
 
     public function create(Image $image)

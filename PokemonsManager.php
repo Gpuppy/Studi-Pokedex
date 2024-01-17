@@ -4,10 +4,9 @@ require("./Pokemon.php");
 class PokemonsManager{
     private $db;
 
-
     public function __construct()
     {
-        $dbName = "mysql://pg5vb9547j5p7ewi:chjijzyrqpkmjzbh@d3y0lbg7abxmbuoi.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306/ejta5rbv6riwb80b";
+        /*$dbName = "mysql://pg5vb9547j5p7ewi:chjijzyrqpkmjzbh@d3y0lbg7abxmbuoi.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306/ejta5rbv6riwb80b";
         $port = 3306;
         $username = "pg5vb9547j5p7ewi";
         $password = "chjijzyrqpkmjzbh";
@@ -15,8 +14,8 @@ class PokemonsManager{
             $this->db = new PDO("mysql:host=localhost;dbname=$dbName;port=$port", $username, $password) ;
         }catch(PDOException $exception){
             echo $exception->getMessage();
-        }
-        /*$dbName = "studi-pokedex";
+        }*/
+        $dbName = "studi-pokedex";
         $port = 3306;
         $username = "root";
         $password = "root";
@@ -24,13 +23,13 @@ class PokemonsManager{
             $this->db = new PDO("mysql:host=localhost;dbname=$dbName;port=$port", $username, $password) ;
         }catch(PDOException $exception){
 echo $exception->getMessage();
-        }*/
+        }
     }
 
     public function create(Pokemon $pokemon)
     {
-       $req = $this->db->prepare("INSERT INTO `pokemon`(number, name, description, type1, type2, image) VALUE(:number, :name, :description, :type1, :type2, :image)");
-       $req->bindValue(":number", $pokemon->getNumber(),PDO::PARAM_INT);
+       $req = $this->db->prepare("INSERT INTO `pokemon`(/*number,*/ name, description, type1, type2, image) VALUE(/*:number,*/ :name, :description, :type1, :type2, :image)");
+       /*$req->bindValue(":number", $pokemon->getNumber(),PDO::PARAM_INT);*/
        $req->bindValue(":name", $pokemon->getName(),PDO::PARAM_STR);
        $req->bindValue(":description", $pokemon->getDescription(),PDO::PARAM_STR);
        $req->bindValue(":type1", $pokemon->getType1(),PDO::PARAM_INT);
@@ -53,7 +52,7 @@ echo $exception->getMessage();
     public function getAll() : array
     {
         $pokemons = [];
-        $req = $this->db->query("SELECT * FROM `pokemon` ORDER BY number");
+        $req = $this->db->query("SELECT * FROM `pokemon` ORDER BY name");
         $datas = $req->fetchAll();
         foreach ($datas as $data) {
              $pokemon = new Pokemon($data);
@@ -66,7 +65,7 @@ echo $exception->getMessage();
     public function getAllByString(string $input)
     {
         $pokemons = [];
-        $req = $this->db->prepare("SELECT * FROM 'pokemon' WHERE name LIKE : input ORDER BY number");
+        $req = $this->db->prepare("SELECT * FROM 'pokemon' WHERE name LIKE : input ORDER BY name");
         $req->bindValue(":input", $input, PDO::PARAM_STR);
         $datas = $req->fetchAll();
         foreach ($datas as $data) {
@@ -79,7 +78,7 @@ echo $exception->getMessage();
     public function getAllByType(string $input)
     {
         $pokemons = [];
-        $req = $this->db->prepare("SELECT * FROM 'pokemon' WHERE type1 LIKE: input OR type2 LIKE: input ORDER BY number");
+        $req = $this->db->prepare("SELECT * FROM 'pokemon' WHERE type1 LIKE: input OR type2 LIKE: input ORDER BY name");
         $req->bindValue(":input", $input, PDO::PARAM_STR);
         $datas = $req->fetchAll();
         foreach ($datas as $data) {
@@ -91,9 +90,9 @@ echo $exception->getMessage();
 
     public function update(Pokemon $pokemon)
     {
-        $req = $this->db->prepare("UPDATE `pokemon` SET number = :number, name = :name, description = :description, type1 = :type1, type2 = :type2, image = :image");
+        $req = $this->db->prepare("UPDATE `pokemon` SET /*number = :number,*/ name = :name, description = :description, type1 = :type1, type2 = :type2, image = :image");
 
-        $req->bindValue(":number", $pokemon->getNumber(),PDO::PARAM_INT);
+        /*$req->bindValue(":number", $pokemon->getNumber(),PDO::PARAM_INT);*/
         $req->bindValue(":name", $pokemon->getName(),PDO::PARAM_STR);
         $req->bindValue(":description", $pokemon->getDescription(),PDO::PARAM_STR);
         $req->bindValue(":type1", $pokemon->getType1(),PDO::PARAM_INT);
