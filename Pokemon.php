@@ -2,7 +2,7 @@
 
 class Pokemon {
     private int $id;
-    private $number;
+    /*private $number;*/
     private string $name;
     private string $description;
     private int $type1;
@@ -48,7 +48,7 @@ class Pokemon {
     /**
      * Get value of number
      */
-    public function getNumber()
+    /*public function getNumber()
     {
         return $this->number;
     }
@@ -58,14 +58,14 @@ class Pokemon {
      *
      * @return self
      */
-
+/*
         public function setNumber($number)
         {
         if(is_int($number) < 800){
             $this->number = $number;
         }
         return $this;
-    }
+    }*/
 
     /**
      * @Get the value of name

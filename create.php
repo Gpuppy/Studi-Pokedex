@@ -4,7 +4,7 @@ require ("./PokemonsManager.php");
 require ("header.php");
 require("./TypesManager.php");
 require ("./ImagesManager.php");
-//require("./Image.php");
+require("./Image.php");
 $pokemonManager = new PokemonsManager();
 
 $typeManager = new TypesManager();
@@ -12,7 +12,7 @@ $types = $typeManager->getAll();
 $error = null;
 
 if($_POST){
-    $number = $_POST["number"];
+    /*$number = $_POST["number"];*/
     $name = $_POST["name"];
     $description = $_POST["description"];
     $idType1 = $_POST["type1"];
@@ -53,7 +53,7 @@ try{
       $idImage = $imagesManager->getLastImageId();
 //var_dump($idImage);
       $newPokemon = new Pokemon([
-              "number" => $number,
+              /*"number" => $number,*/
       "name" => $name,
       "description" => $description,
           "type1" => $idType1,
@@ -74,8 +74,8 @@ try{
         echo "<p class = 'alert alert-danger'>$error</p>";
     }?>
 <form method = "post" enctype="multipart/form-data">
-    <label for = "number" class="form-label">Number</label>
-    <input type="number" name="number" placeholder="Pokemon's number" id="name" class="form-control" min="1" max="901">
+    <!--label for = "number" class="form-label">Number</label>
+    <input type="number" name="number" placeholder="Pokemon's number" id="name" class="form-control" min="1" max="901"-->
     <label for = "name" class="form-label">Name</label>
     <input type="text" name="name" placeholder="Pokemon's name" id="name" class="form-control" min="1" max="901">
     <label for = "description" class="form-label">Description</label>
@@ -103,7 +103,7 @@ try{
 
     </select> <br>
 
-<label for="image" class="form-label">Image</label><br>
+<!--label for="image" class="form-label">Image</label><br>
 
     <select name="image" id="image" class="form-select">
         <option value="">---</option>
@@ -112,7 +112,7 @@ try{
             <option value="<?= $type->getId() ?>"><?=$type->getName()?></option>
         <?php endforeach ?>
 
-    </select>
+    </select-->
 
         <br>
     <label for="image" class="form-label">Image</label>
