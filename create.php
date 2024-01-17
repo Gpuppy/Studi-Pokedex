@@ -103,7 +103,7 @@ try{
 
     </select> <br>
 
-<!--label for="image" class="form-label">Image</label><br>
+<label for="image" class="form-label">Image</label><br>
 
     <select name="image" id="image" class="form-select">
         <option value="">---</option>
@@ -112,7 +112,7 @@ try{
             <option value="<?= $type->getId() ?>"><?=$type->getName()?></option>
         <?php endforeach ?>
 
-    </select-->
+    </select>
 
         <br>
     <label for="image" class="form-label">Image</label>
