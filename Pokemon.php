@@ -1,13 +1,14 @@
 <?php
 
 class Pokemon {
-    private int $id;
-    /*private $number;*/
-    private string $name;
-    private string $description;
-    private int $type1;
+    private $id;
+    private $number;
+    private $name;
+    private $description;
+    private $type1;
     private $type2;
     private $image;
+
 
     public function __construct(array $data)
     {
@@ -48,7 +49,7 @@ class Pokemon {
     /**
      * Get value of number
      */
-    /*public function getNumber()
+    public function getNumber()
     {
         return $this->number;
     }
@@ -58,14 +59,14 @@ class Pokemon {
      *
      * @return self
      */
-/*
+
         public function setNumber($number)
         {
         if(is_int($number) < 800){
             $this->number = $number;
         }
         return $this;
-    }*/
+    }
 
     /**
      * @Get the value of name
