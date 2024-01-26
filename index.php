@@ -19,14 +19,14 @@ echo "Connection was successfully established!";*/
 $url = getenv('JAWSDB_URL');
 $dbparts = parse_url($url);
 
-$hostname = $dbparts['host'];
+/*$hostname = $dbparts['host'];
 $username = $dbparts['user'];
 $password = $dbparts['pass'];
-$dbName = ltrim($dbparts['path'],'/');
+$dbName = ltrim($dbparts['path'],'/');*/
 
 $url = parse_url(getenv("mysql://pg5vb9547j5p7ewi:chjijzyrqpkmjzbh@d3y0lbg7abxmbuoi.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306/ejta5rbv6riwb80b"));
 
-try {
+/*try {
     $conn = new PDO("mysql:host=d3y0lbg7abxmbuoi.chr7pe7iynqr.eu-west-1.rds.amazonaws.com;dbname=ejta5rbv6riwb80b", 'pg5vb9547j5p7ewi', 'chjijzyrqpkmjzbh');
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -35,7 +35,7 @@ try {
 catch(PDOException $e)
 {
     echo "Connection failed: " . $e->getMessage();
-}
+}*/
 ?>
 
 
@@ -78,6 +78,11 @@ catch(PDOException $e)
 
 </main>
 </body>
+<footer>
+    <?php
+require("./footer.php");
+?>
+</footer>
 
 
 

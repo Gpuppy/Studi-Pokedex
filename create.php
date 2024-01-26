@@ -4,7 +4,8 @@ require ("./PokemonsManager.php");
 require ("header.php");
 require("./TypesManager.php");
 require ("./ImagesManager.php");
-require("./Image.php");
+//require("./Image.php");
+
 $pokemonManager = new PokemonsManager();
 
 $typeManager = new TypesManager();
