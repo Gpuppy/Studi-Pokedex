@@ -7,7 +7,7 @@ class Pokemon {
     private string $description;
     private int $type1;
     private $type2;
-    private string $image;
+    private $image;
 
     public function __construct(array $data)
     {
