@@ -10,12 +10,12 @@ $pokemons = $manager->getAll();
 
 
 // Connect to DB
-/*$conn = new mysqli('d3y0lbg7abxmbuoi.chr7pe7iynqr.eu-west-1.rds.amazonaws.com', 'pg5vb9547j5p7ewi', 'chjijzyrqpkmjzbh', 'ejta5rbv6riwb80b');
+$conn = new mysqli('d3y0lbg7abxmbuoi.chr7pe7iynqr.eu-west-1.rds.amazonaws.com', 'pg5vb9547j5p7ewi', 'chjijzyrqpkmjzbh', 'ejta5rbv6riwb80b');
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-echo "Connection was successfully established!";*/
+echo "Connection was successfully established!";
 $url = getenv('JAWSDB_URL');
 $dbparts = parse_url($url);
 
