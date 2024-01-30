@@ -3,8 +3,8 @@
 
 require ("header.php");
 require "./PokemonsManager.php";
-$manager = new PokemonsManager();
 require './ImagesManager.php';
+$manager = new PokemonsManager();
 $imagesManager = new ImagesManager();
 $pokemons = $manager->getAll();
 
@@ -24,7 +24,7 @@ $username = $dbparts['user'];
 $password = $dbparts['pass'];
 $dbName = ltrim($dbparts['path'],'/');*/
 
-$url = parse_url(getenv("mysql://pg5vb9547j5p7ewi:chjijzyrqpkmjzbh@d3y0lbg7abxmbuoi.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306/ejta5rbv6riwb80b"));
+$CLEARDB_DATABASE_URL = parse_url(getenv("mysql://pg5vb9547j5p7ewi:chjijzyrqpkmjzbh@d3y0lbg7abxmbuoi.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306/ejta5rbv6riwb80b"));
 
 /*try {
     $conn = new PDO("mysql:host=d3y0lbg7abxmbuoi.chr7pe7iynqr.eu-west-1.rds.amazonaws.com;dbname=ejta5rbv6riwb80b", 'pg5vb9547j5p7ewi', 'chjijzyrqpkmjzbh');

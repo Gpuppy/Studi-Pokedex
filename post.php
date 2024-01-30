@@ -1,5 +1,5 @@
 <?php
-require("./layout/header.php");
+require("./header.php");
 require("./PokemonsManager.php");
 require("./TypesManager.php");
 require("./ImagesManager.php");
@@ -114,4 +114,4 @@ if ($error) {
             <input type="submit" class="btn btn-success mt-3" value="Créer">
         <?php endif ?>
     </form>
-<?php require("./layout/footer.php") ?>
+<?php require("./footer.php") ?>
