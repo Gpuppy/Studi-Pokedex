@@ -1,4 +1,4 @@
-<body >
+<body>
 <?php
 
 require ("header.php");
@@ -17,7 +17,7 @@ if ($conn->connect_error) {
 }
 echo "Connection was successfully established!";*/
 $url = getenv('JAWSDB_URL');
-$dbparts = parse_url($url);
+$dbparts = parse_url(' mysql://pg5vb9547j5p7ewi:chjijzyrqpkmjzbh@d3y0lbg7abxmbuoi.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306/ejta5rbv6riwb80b');
 
 $hostname = $dbparts['d3y0lbg7abxmbuoi.chr7pe7iynqr.eu-west-1.rds.amazonaws.com'];
 $username = $dbparts['pg5vb9547j5p7ewi'];

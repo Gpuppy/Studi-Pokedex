@@ -13,7 +13,7 @@ $types = $typeManager->getAll();
 $error = null;
 
 if($_POST){
-    /*$number = $_POST["number"];*/
+    $number = $_POST["number"];
     $name = $_POST["name"];
     $description = $_POST["description"];
     $idType1 = $_POST["type1"];
