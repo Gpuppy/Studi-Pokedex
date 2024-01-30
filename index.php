@@ -10,23 +10,23 @@ $pokemons = $manager->getAll();
 
 
 // Connect to DB
-$conn = new mysqli('d3y0lbg7abxmbuoi.chr7pe7iynqr.eu-west-1.rds.amazonaws.com', 'pg5vb9547j5p7ewi', 'chjijzyrqpkmjzbh', 'ejta5rbv6riwb80b');
+/*$conn = new mysqli('d3y0lbg7abxmbuoi.chr7pe7iynqr.eu-west-1.rds.amazonaws.com', 'pg5vb9547j5p7ewi', 'chjijzyrqpkmjzbh', 'ejta5rbv6riwb80b');
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-echo "Connection was successfully established!";
+echo "Connection was successfully established!";*/
 $url = getenv('JAWSDB_URL');
 $dbparts = parse_url($url);
 
-/*$hostname = $dbparts['host'];
-$username = $dbparts['user'];
-$password = $dbparts['pass'];
-$dbName = ltrim($dbparts['path'],'/');*/
+$hostname = $dbparts['d3y0lbg7abxmbuoi.chr7pe7iynqr.eu-west-1.rds.amazonaws.com'];
+$username = $dbparts['pg5vb9547j5p7ewi'];
+$password = $dbparts['chjijzyrqpkmjzbh'];
+$dbName = ltrim($dbparts['ejta5rbv6riwb80b'],'/');
 
-$CLEARDB_DATABASE_URL = parse_url(getenv("mysql://pg5vb9547j5p7ewi:chjijzyrqpkmjzbh@d3y0lbg7abxmbuoi.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306/ejta5rbv6riwb80b"));
+/*$CLEARDB_DATABASE_URL = parse_url(getenv("mysql://pg5vb9547j5p7ewi:chjijzyrqpkmjzbh@d3y0lbg7abxmbuoi.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306/ejta5rbv6riwb80b"));*/
 
-/*try {
+try {
     $conn = new PDO("mysql:host=d3y0lbg7abxmbuoi.chr7pe7iynqr.eu-west-1.rds.amazonaws.com;dbname=ejta5rbv6riwb80b", 'pg5vb9547j5p7ewi', 'chjijzyrqpkmjzbh');
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -35,7 +35,7 @@ $CLEARDB_DATABASE_URL = parse_url(getenv("mysql://pg5vb9547j5p7ewi:chjijzyrqpkmj
 catch(PDOException $e)
 {
     echo "Connection failed: " . $e->getMessage();
-}*/
+}
 ?>
 
 
