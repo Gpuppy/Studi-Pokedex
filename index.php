@@ -1,25 +1,44 @@
 <body>
 <?php
 
-use Dotenv\Dotenv;
-
+require_once ('vendor/autoload.php');
+require(".env");
 require ("header.php");
 require "./PokemonsManager.php";
 require './ImagesManager.php';
+use Dotenv\Dotenv as Dotenv;
 $manager = new PokemonsManager();
 $imagesManager = new ImagesManager();
 $pokemons = $manager->getAll();
 
-// Add Database connection to Container
-$url = getenv('JAWSDB_URL');
-$dbparts = parse_url($url);
 
-$hostname = $dbparts['host'];
+
+ public function __construct()
+    {
+        $dotenv = Dotenv::createImmutable(__DIR__ . '/vendor/autoload.php');
+        $dotenv->load();
+
+        $this->hostname = $_ENV['HOSTNAME'];
+        $this->username = $_ENV['USERNAME'];
+        $this->dbname = $_ENV['DBNAME'];
+        $this->password = $_ENV['PASSWORD'];
+
+        try {
+            $dbh = new PDO($this->hostname, $this->username, $this->dbname, $this->password);
+        } catch (PDOException $e) {
+            die('attempt to retry the connection after some timeout for example');
+        }
+
+    }
+
+
+
+/*$hostname = $dbparts['host'];
 $username = $dbparts['user'];
 $password = $dbparts['pass'];
-$database = ltrim($dbparts['path'],'/');
+$database = ltrim($dbparts['path'],'/');*/
 
-try {
+/*try {
     $conn = new PDO("mysql:host=$hostname;dbname=$database", $username, $password);
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

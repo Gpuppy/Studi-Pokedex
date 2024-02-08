@@ -1,20 +1,47 @@
 <?php
 
 require("./Pokemon.php");
+require(".env");
+use Dotenv\Dotenv as Dotenv;
+
 class PokemonsManager{
     private $db;
+    private mixed $hostname;
+    /**
+     * @var array|string[]
+     */
+    private array $username;
+    private mixed $password;
 
     public function __construct()
     {
-        $dbName = "studi-pokedex";
-        $port = 3306;
+        $dotenv = Dotenv::createImmutable(__DIR__ . '/vendor/autoload.php');
+        $dotenv->load();
+
+        $this->hostname = $_ENV['HOSTNAME'];
+        $this->username = $_ENV['USERNAME'];
+        $this->dbname = $_ENV['DBNAME'];
+        $this->password = $_ENV['PASSWORD'];
+
+        /*$dbName = "";
+        #$port = 3306;
+        $hostname =
         $username = "root";
         $password = "root";
+
         try{
             $this->db = new PDO("mysql:host=localhost;dbname=$dbName;port=$port", $username, $password) ;
         }catch(PDOException $exception){
 echo $exception->getMessage();
         }
+    }*/
+        try {
+            $dbh = new PDO($this->hostname, $this->username, $this->dbname, $this->password);
+        } catch (PDOException $e) {
+            die('attempt to retry the connection after some timeout for example');
+        }
+
+
     }
 
     public function create(Pokemon $pokemon)
@@ -97,8 +124,7 @@ echo $exception->getMessage();
     {
          //code
         $req = $this->db->prepare("DELETE FROM `pokemon` WHERE id = :id");
-        $req->bindValue(":id", $id, PDO::PARAM_INT );
-        $req->execute();
+        $req->bindValue(":id", $id, PDO::PARAM_INT );        $req->execute();
     }
 }
 
