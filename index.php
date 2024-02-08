@@ -13,12 +13,12 @@ $pokemons = $manager->getAll();
 
 
 
- public function __construct()
+ /*public function __construct()
     {
-        $dotenv = Dotenv::createImmutable(__DIR__ . '/vendor/autoload.php');
-        $dotenv->load();
+        /*$dotenv = Dotenv::createImmutable(__DIR__ . '/vendor/autoload.php');*/
+        /*$dotenv->load();*/
 
-        $this->hostname = $_ENV['HOSTNAME'];
+        /*$this->hostname = $_ENV['HOSTNAME'];
         $this->username = $_ENV['USERNAME'];
         $this->dbname = $_ENV['DBNAME'];
         $this->password = $_ENV['PASSWORD'];
@@ -29,7 +29,7 @@ $pokemons = $manager->getAll();
             die('attempt to retry the connection after some timeout for example');
         }
 
-    }
+    }*/
 
 
 
